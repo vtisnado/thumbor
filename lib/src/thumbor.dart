@@ -5,8 +5,8 @@ class Thumbor {
   final String key;
 
   Thumbor({
-    this.host,
-    this.key,
+    required this.host,
+    this.key = "",
   }) : assert(host != null) {
     if (host.isEmpty) {
       throw ArgumentError("Host may not be empty");

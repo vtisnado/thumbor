@@ -79,8 +79,8 @@ class ThumborUrl {
   static const _FILTER_ROTATE = "rotate";
 
   bool _hasTrim = false;
-  TrimOrientation _trimOrientation;
-  int _trimTolerance;
+  late TrimOrientation _trimOrientation;
+  late int _trimTolerance;
 
   bool _hasCrop = false;
   int _cropTop = 0;
@@ -89,24 +89,24 @@ class ThumborUrl {
   int _cropRight = 0;
 
   bool _hasResize = false;
-  int _resizeHeight;
-  int _resizeWidth;
+  late int _resizeHeight;
+  late int _resizeWidth;
 
   bool _flipVertically = false;
   bool _flipHorizontally = false;
   bool _smart = false;
 
-  HorizontalAlignment _horizontalAlign;
-  VerticalAlignment _verticalAlign;
+  late HorizontalAlignment _horizontalAlign;
+  late VerticalAlignment _verticalAlign;
 
-  FitInStyle _fitInStyle;
+  late FitInStyle _fitInStyle;
 
-  List<String> _filters;
+  late List<String> _filters;
 
   ThumborUrl({
-    this.host,
-    this.key,
-    this.imageUrl,
+    required this.host,
+    this.key = "",
+    required this.imageUrl,
   })  : assert(host != null),
         assert(imageUrl != null) {
     if (host.isEmpty) {
@@ -114,9 +114,9 @@ class ThumborUrl {
     }
   }
 
-  void trim({TrimOrientation orientation, int tolerance = 0}) {
+  void trim({TrimOrientation? orientation, int tolerance = 0}) {
     this._hasTrim = true;
-    this._trimOrientation = orientation;
+    this._trimOrientation = orientation!;
     this._trimTolerance = tolerance;
   }
 
@@ -208,7 +208,7 @@ class ThumborUrl {
       throw ArgumentError("You must provide at least one filter.");
     }
     if (this._filters == null) {
-      this._filters = List();
+      this._filters = [];
     }
 
     filters.forEach((filter) {
