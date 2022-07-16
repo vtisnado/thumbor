@@ -11,3 +11,6 @@ ios/Runner/GeneratedPluginRegistrant.*
 
 .idea
 *.iml
+
+
+.fvm/flutter_sdk
